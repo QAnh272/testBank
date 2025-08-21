@@ -7,21 +7,23 @@ class Account {
         this.transactions = [];
     }
 
+
     deposit(amount, fromAccount = null) {
         if (amount <= 0) throw new Error('Số tiền nạp phải lớn hơn 0');
         this.balance += amount;
-        // fromAccount: nếu là chuyển khoản thì fromAccount là id tài khoản gửi, còn nạp tiền thì null hoặc chính id này
-        const tx = new Transaction('deposit', amount, fromAccount, this.id);
+        // Nếu fromAccount không truyền vào thì mặc định là chính tài khoản này (nạp tiền mặt)
+        const tx = new Transaction('deposit', amount, fromAccount || this.id, this.id);
         this.transactions.push(tx);
         return tx;
     }
+
 
     withdraw(amount, toAccount = null) {
         if (amount <= 0) throw new Error('Số tiền rút phải lớn hơn 0');
         if (amount > this.balance) throw new Error('Không đủ số dư');
         this.balance -= amount;
-        // toAccount: nếu là chuyển khoản thì toAccount là id tài khoản nhận, còn rút tiền thì null hoặc chính id này
-        const tx = new Transaction('withdraw', amount, this.id, toAccount);
+        // Nếu toAccount không truyền vào thì mặc định là chính tài khoản này (rút tiền mặt)
+        const tx = new Transaction('withdraw', amount, this.id, toAccount || this.id);
         this.transactions.push(tx);
         return tx;
     }
@@ -34,6 +36,7 @@ class Account {
         return this.transactions;
     }
 
+
     transferTo(targetAccount, amount) {
         if (amount <= 0) throw new Error('Số tiền chuyển phải lớn hơn 0');
         if (amount > this.balance) throw new Error('Không đủ số dư');
@@ -42,7 +45,7 @@ class Account {
         targetAccount.balance += amount;
         const tx = new Transaction('transfer', amount, this.id, targetAccount.id);
         this.transactions.push(tx);
-        // Đồng thời ghi nhận transaction vào tài khoản nhận (để lịch sử 2 chiều)
+        // Đồng thời ghi nhận transaction vào tài khoản nhận (để lịch sử 2 chiều, type là 'receive')
         const txReceive = new Transaction('receive', amount, this.id, targetAccount.id);
         targetAccount.transactions.push(txReceive);
         return tx;
