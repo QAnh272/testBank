@@ -69,6 +69,7 @@ npm test
 
 ```bash
 # Chạy demo để xem hệ thống hoạt động
+npm run demo
 node src/index.js
 ```
 
@@ -160,7 +161,8 @@ Dự án bao gồm các biểu đồ Mermaid để hiểu rõ hệ thống:
    - Mở file `.md` chứa biểu đồ (ví dụ: `useCaseDiag.md`)
    - Click nút **Preview** (👁️) ở góc phải trên
    - Hoặc: `Ctrl+Shift+P` → gõ "Mermaid Preview"
-```
+
+````
 
 ## 🛠️ Công nghệ sử dụng
 
@@ -177,7 +179,7 @@ Dự án bao gồm các biểu đồ Mermaid để hiểu rõ hệ thống:
 ```javascript
 const CustomerService = require("./src/services/customerService");
 const customer = CustomerService.createCustomer("John Doe", "john@email.com");
-```
+````
 
 ### Nạp tiền
 
