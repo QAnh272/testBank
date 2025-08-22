@@ -49,8 +49,8 @@ src/
 
 ```bash
 # Clone dự án
-git clone <repository-url>
-cd "The Bank"
+git clone https://github.com/QAnh272/testBank
+cd path/Users/<your_profile>/testBank
 
 # Cài đặt dependencies
 npm install
