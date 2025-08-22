@@ -1,0 +1,49 @@
+graph LR
+    %% Actors
+    Customer([👤 Customer])
+    BankManager([🏦 Bank Manager])
+
+    %% Banking System Container
+    subgraph Banking["🏛️ Banking System"]
+        direction TB
+
+        %% Customer Use Cases
+        subgraph CustomerUC["Customer Functions"]
+            UC1[Join Bank]
+            UC2[Deposit Money]
+            UC3[Withdraw Money]
+            UC4[Check Balance]
+            UC5[View Transactions]
+            UC6[Internal Transfer]
+        end
+
+        %% Bank Manager Use Cases
+        subgraph ManagerUC["Manager Functions"]
+            UC7[View Total Balance]
+            UC8[View All Transactions]
+            UC9[View All Customers]
+            UC10[View All Accounts]
+        end
+    end
+
+    %% Connections
+    Customer -.-> UC1
+    Customer -.-> UC2
+    Customer -.-> UC3
+    Customer -.-> UC4
+    Customer -.-> UC5
+    Customer -.-> UC6
+
+    BankManager -.-> UC7
+    BankManager -.-> UC8
+    BankManager -.-> UC9
+    BankManager -.-> UC10
+
+    %% Styling
+    classDef actor fill:#1976D2,stroke:#0D47A1,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef customerUC fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef managerUC fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#FFFFFF,font-weight:bold
+
+    class Customer,BankManager actor
+    class UC1,UC2,UC3,UC4,UC5,UC6 customerUC
+    class UC7,UC8,UC9,UC10 managerUC

@@ -1,0 +1,62 @@
+classDiagram
+    class Customer {
+        -string id
+        -string name
+        -string email
+        -Account[] accounts
+        +addAccount(account)
+    }
+    
+    class Account {
+        -string id
+        -number balance
+        -Transaction[] transactions
+        -Customer customer
+        +deposit(amount)
+        +withdraw(amount)
+        +transferTo(toAccount, amount)
+        +getBalance()
+        +getTransactions()
+    }
+    
+    class Transaction {
+        -string id
+        -string type
+        -number amount
+        -string fromAccount
+        -string toAccount
+        -Date date
+    }
+    
+    class CustomerService {
+        +createCustomer(id, name, email)
+        +deposit(customer, amount, accountIndex)
+        +withdraw(customer, amount, accountIndex)
+        +getBalance(customer, accountIndex)
+        +getTransactions(customer, accountIndex)
+        +transfer(fromCustomer, toCustomer, amount)
+    }
+    
+    class BankService {
+        -Customer[] customers
+        +addCustomer(customer)
+        +getCustomers()
+        +getAllAccounts()
+        +getAllTransactions()
+        +getTotalBalance()
+    }
+    
+    class BankManagerService {
+        -BankService bank
+        +viewTotalBalance()
+        +viewAllTransactions()
+        +viewAllCustomers()
+        +viewAllAccounts()
+    }
+    
+    Customer "1" --> "*" Account : owns
+    Account "1" --> "*" Transaction : has
+    CustomerService ..> Customer : uses
+    CustomerService ..> Account : uses
+    BankService "1" --> "*" Customer : manages
+    BankManagerService --> BankService : uses

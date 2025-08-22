@@ -136,9 +136,35 @@ Khi chạy `node src/index.js`, bạn sẽ thấy:
 📋 Tổng số giao dịch: 81 giao dịch
 ```
 
+## 📈 Biểu đồ và Tài liệu Kỹ thuật
+
+Dự án bao gồm các biểu đồ Mermaid để hiểu rõ hệ thống:
+
+### 📁 Các file biểu đồ có sẵn:
+
+- **`useCaseDiag.md`** - Use Case Diagram (Chức năng hệ thống)
+- **`actiDiag.md`** - Activity Diagram (Quy trình hoạt động)
+- **`ERDDiag.md`** - Entity Relationship Diagram (Cấu trúc dữ liệu)
+- **`classDiag.md`** - Class Diagram (Kiến trúc lớp)
+
+### 🔍 Cách xem biểu đồ Mermaid:
+
+#### VS Code Extension (Recommended)
+
+1. **Cài đặt extension**:
+
+   - Mở VS Code Extensions: `Ctrl+Shift+X`
+   - Tìm và cài: `Mermaid Chart` hoặc `Mermaid Preview`
+
+2. **Xem biểu đồ**:
+   - Mở file `.md` chứa biểu đồ (ví dụ: `useCaseDiag.md`)
+   - Click nút **Preview** (👁️) ở góc phải trên
+   - Hoặc: `Ctrl+Shift+P` → gõ "Mermaid Preview"
+```
+
 ## 🛠️ Công nghệ sử dụng
 
-- **Runtime**: Node.js 18+
+- **Runtime**: Node.js 24+
 - **Testing Framework**: Jest
 - **Architecture**: Service-oriented với tách biệt rõ ràng
 - **Module System**: CommonJS để tương thích tốt
@@ -173,29 +199,3 @@ if (result.success) {
 ```javascript
 CustomerService.transfer(fromAccountId, toAccountId, 200);
 ```
-
-## 🎯 Mục tiêu dự án
-
-Dự án này được thiết kế để:
-
-- ✅ **Đáp ứng yêu cầu kỹ thuật** một cách đầy đủ
-- ✅ **Thể hiện kỹ năng lập trình** với code sạch và dễ hiểu
-- ✅ **Áp dụng best practices** trong Node.js
-- ✅ **Tạo hệ thống có thể mở rộng** trong tương lai
-
-## 🤝 Đóng góp
-
-Nếu bạn muốn đóng góp cho dự án:
-
-1. Fork repository
-2. Tạo branch mới cho feature
-3. Commit changes
-4. Tạo Pull Request
-
-## 📞 Liên hệ
-
-Nếu có thắc mắc về dự án, vui lòng tạo issue hoặc liên hệ trực tiếp.
-
----
-
-_Dự án được tạo như một phần của bài test kỹ thuật - Banking System Implementation_
